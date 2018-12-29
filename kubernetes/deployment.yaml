@@ -1,0 +1,51 @@
+---
+apiVersion: "extensions/v1beta1"
+kind: "Deployment"
+metadata:
+  name: "eshop-email-sender"
+  namespace: "default"
+  labels:
+    app: "eshop-email-sender"
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: "eshop-email-sender"
+  template:
+    metadata:
+      labels:
+        app: "eshop-email-sender"
+    spec:
+      containers:
+      - name: "eshop-email-sender"
+        image: "eu.gcr.io/eshop-trzos/eshop-email-sender-{ENVIRONMENT}:{COMMIT_SHA}"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+          - name: RAILS_MASTER_KEY
+            valueFrom:
+              secretKeyRef:
+                name: eshop-email-sender-secrets
+                key: rails-master-key
+---
+apiVersion: "autoscaling/v1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "eshop-email-sender-hpa"
+  namespace: "default"
+  labels:
+    app: "eshop-email-sender"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "eshop-email-sender"
+    apiVersion: "apps/v1beta1"
+  minReplicas: 1
+  maxReplicas: 1
+  targetCPUUtilizationPercentage: 80
