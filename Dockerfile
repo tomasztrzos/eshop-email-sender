@@ -10,4 +10,4 @@ COPY . /eshop-email-sender
 
 EXPOSE 3000
 
-CMD bundle exec passenger start -e {ENVIRONMENT}
+CMD bundle exec rails s -e {ENVIRONMENT}
