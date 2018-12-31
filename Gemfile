@@ -16,6 +16,10 @@ gem 'execjs', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+group :staging do
+  gem 'stackdriver'
+end
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry', '~> 0.12.2'

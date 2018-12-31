@@ -83,6 +83,24 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+  # Stackdriver - credentials
+  config.google_cloud.project_id = "eshop-trzos"
+  config.google_cloud.keyfile = File.join(Rails.root, 'config', 'auths', 'eshop-trzos-46ec9464cb10.json')
+
+  # Stackdriver - options to use in development/staging environment
+  config.google_cloud.use_logging = true
+  config.google_cloud.use_error_reporting = true
+
+  # Stackdriver - error_reporting
+  config.google_cloud.error_reporting.service_name = 'eshop-email-sender'
+  config.google_cloud.error_reporting.service_version = 'staging'
+
+  # Stackdriver - logging
+  config.google_cloud.logging.log_name = "eshop-email-sender"
+
+  # Stackdriver - trace
+  config.google_cloud.trace.capture_stack = true
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
