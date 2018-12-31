@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     render plain: "eshop-email-sender, env: #{Rails.env}"
   end
 
-  def send_email_with_order
+  def pubsub_adapter
     Rails.logger.info '=> STARTED PROCESSING MESSAGE FROM PUB/SUB'
     Rails.logger.info params.to_s
     slug = Base64.decode64(params[:message][:attributes][:slug])
