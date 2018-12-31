@@ -5,6 +5,7 @@ ruby '2.5.3'
 
 gem 'rails', '~> 5.2.2'
 gem 'passenger', '~> 6.0', require: 'phusion_passenger/rack_handler'
+gem 'google-cloud'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'

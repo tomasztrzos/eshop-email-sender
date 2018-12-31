@@ -94,7 +94,7 @@ Rails.application.configure do
   # Stackdriver - error_reporting
   config.google_cloud.error_reporting.service_name = 'eshop-email-sender'
   config.google_cloud.error_reporting.service_version = 'staging'
-
+  
   # Stackdriver - logging
   config.google_cloud.logging.log_name = "eshop-email-sender"
 
