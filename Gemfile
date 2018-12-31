@@ -17,8 +17,19 @@ gem 'execjs', '~> 2.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'pry', '~> 0.12.2'
+  gem 'pry-remote', '~> 0.1.8'
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.1'
+  gem 'fuubar', '~> 2.3', '>= 2.3.2'
+  gem 'rubocop', '~> 0.61.1'
+end
+
+group :test do
+  gem 'factory_bot_rails', '~> 4.11', '>= 4.11.1'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
+  gem 'database_cleaner', '~> 1.7'
+  gem 'faker', '~> 1.9', '>= 1.9.1'
 end
 
 group :development do
