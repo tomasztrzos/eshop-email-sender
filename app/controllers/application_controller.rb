@@ -6,11 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def pubsub_adapter
-    Rails.logger.info '=> STARTED PROCESSING MESSAGE FROM PUB/SUB'
-    Rails.logger.info params.to_s
-    slug = Base64.decode64(params[:message][:attributes][:slug])
-    Rails.logger.info slug.to_s
-    Rails.logger.info '<= FINISHED PROCESSING MESSAGE FROM PUB/SUB'
+    UsersOrderMailer.send_order_summary('trzos.tomasz@gmail.com', params).deliver
 
     respond_to do |format|
       format.any { render json: { message: 'ok' }, content_type: 'application/json' }
