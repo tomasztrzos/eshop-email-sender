@@ -1,15 +1,13 @@
 class UsersOrderMailer < ApplicationMailer
-  def send_order_summary(email, params)
-    @pubsub_msg = params['message']['attributes']
-    # @orders_date = pubsub_msg['created_at']
-    # @products_array = pubsub_msg['products']
-    # @total_price = pubsub_msg['total_price']
-    # @shipping_details = pubsub_msg['orders_shipping_details']
-    @orders_date = ''
-    @products_array = []
-    @total_price = ''
-    @shipping_details = ''
+  def send_order_summary(params)
+    parsed_params = JSON.parse(params)
+    @slug = parsed_params['slug']
+    @orders_date = parsed_params['created_at']
+    @products_array = parsed_params['products']
+    @total_price = parsed_params['total_price']
+    @shipping_details = parsed_params['orders_shipping_details']
+    email = @shipping_details['email']
 
-    mail(to: email, subject: 'Order summary from trzos-tomasz.pl')
+    mail(to: email, subject: 'Order summary from eshop')
   end
 end
