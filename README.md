@@ -1,24 +1,27 @@
-# README
+# Engineering Thesis: eshop-email-sender
+### Tomasz Trzos, Student of Polish-Japanese Academy of Information Technology
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## License
 
-Things you may want to cover:
+© 2018 Tomasz Trzos all rights reserved.
 
-* Ruby version
+## General Information
 
-* System dependencies
+- Ruby 2.5.3
+- Rails 5.2.2
+- Docker 18.06.1
+- Google Cloud Platform
 
-* Configuration
+## Installation
 
-* Database creation
+1. Get the code. Clone git repository.
 
-* Database initialization
+2. Download and install Docker
 
-* How to run the test suite
+https://www.docker.com/products/docker-engine
 
-* Services (job queues, cache servers, search engines, etc.)
+3. To run the project:
 
-* Deployment instructions
-
-* ...
+```
+bundle exec passenger start
+```
